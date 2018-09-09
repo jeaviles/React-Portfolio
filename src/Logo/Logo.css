@@ -1,0 +1,31 @@
+.Logo {
+  display: flex;
+  font-weight: bold;
+  box-sizing: border-box;
+  padding: 8px;
+  border-radius: 50%;
+  text-align: center;
+}
+
+.Logo .Letters {
+  text-align: center;
+  position: relative;
+  right: 6.5px;
+  bottom: 1.5px;
+}
+
+.LogoJ {
+  text-align: center;
+  padding-left: 5px;
+  position: relative;
+  top: 0;
+  color: #ecebe8;
+  left: 4px;
+}
+
+.LogoA {
+  text-align: center;
+  position: relative;
+  color: #ecebe8;
+  top: 4px;
+}
