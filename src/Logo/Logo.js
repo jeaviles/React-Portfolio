@@ -4,7 +4,7 @@ import "./Logo.css";
 const logo = props => {
   return (
     <div className="Logo" style={{ height: props.height }}>
-      <div className="Letters">
+      <div>
         <span className="LogoJ">J</span>
         <span className="LogoA">A</span>
       </div>

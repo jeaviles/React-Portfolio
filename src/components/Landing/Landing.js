@@ -6,21 +6,9 @@ import Button from "../../UI/Button/Button";
 
 const landing = props => {
   return (
-    <div className="Landing" style={{ marginBottom: "10px" }}>
-      <div
-        style={{
-          margin: "auto",
-          width: "95%",
-          height: "95%",
-          borderRadius: "50%",
-          overflow: "hidden"
-        }}
-      >
-        <img
-          src={ProfilePic}
-          style={{ width: "100%", height: "100%" }}
-          alt=""
-        />
+    <div className="Landing">
+      <div className="ProfilePicCrop">
+        <img src={ProfilePic} className="ProfilePic" alt="" />
       </div>
       <p>
         <strong>Joseph Aviles</strong>

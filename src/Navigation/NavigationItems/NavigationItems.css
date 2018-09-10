@@ -12,6 +12,12 @@
   color: #ecebe8;
 }
 
+@media (max-width: 499px) {
+  .DesktopOnly {
+    display: none;
+  }
+}
+
 @media (min-width: 500px) {
   .NavigationItems {
     flex-flow: row;

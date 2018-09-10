@@ -3,9 +3,14 @@ import "./NavigationItems.css";
 import NavigationItem from "./NavigationItem/NavigationItem";
 
 const navigationItems = props => {
+  let classes = "NavigationItems";
+  if (props.DesktopOnly) {
+    classes = ["NavigationItems", "DesktopOnly"].join(" ");
+  }
+
   return (
     <React.Fragment>
-      <ul className="NavigationItems">
+      <ul className={classes}>
         <NavigationItem>
           Projects <span className="fa fa-th fa-lg" />
         </NavigationItem>

@@ -6,13 +6,44 @@ import "./Layout.css";
 
 class layout extends Component {
   state = {
-    showSideDrawer: false
+    showSideDrawer: false,
+    currentPage: {
+      LandingPage: true,
+      ProjectList: false,
+      AmortProject: false
+    }
   };
 
   toggleDrawerHandler = () => {
     this.setState(prevState => {
       return { showSideDrawer: !prevState.showSideDrawer };
     });
+  };
+
+  currentPageHandler = displayPage => {
+    const updatedCurrenPage = {
+      ...this.state.currentPage
+    };
+
+    Object.keys(updatedCurrenPage).forEach(page => {
+      if (displayPage === page) {
+        updatedCurrenPage[page] = true;
+      } else {
+        updatedCurrenPage[page] = false;
+      }
+    });
+
+    console.log(updatedCurrenPage);
+  };
+
+  fetchCurrentPage = () => {
+    if (this.state.currentPage["LandingPage"]) {
+      return <LandingPage />;
+    } else if (this.state.currentPage["ProjectList"]) {
+      return <LandingPage />;
+    } else if (this.state.currentPage["AmortProject"]) {
+      return <LandingPage />;
+    }
   };
 
   render() {
@@ -22,9 +53,7 @@ class layout extends Component {
           toggleSideDrawer={this.toggleDrawerHandler}
           showDrawer={this.state.showSideDrawer}
         />
-        <main className="Layout">
-          <LandingPage />
-        </main>
+        <main className="Layout">{this.fetchCurrentPage()}</main>
       </React.Fragment>
     );
   }
