@@ -2,15 +2,16 @@ import React, { Component } from "react";
 
 import Toolbar from "../../Navigation/Toolbar/Toolbar";
 import LandingPage from "../../components/Landing/Landing";
+import AmortTool from "../../Containers/AmortTool/AmortTool";
 import "./Layout.css";
 
 class layout extends Component {
   state = {
     showSideDrawer: false,
     currentPage: {
-      LandingPage: true,
+      LandingPage: false,
       ProjectList: false,
-      AmortProject: false
+      AmortTool: true
     }
   };
 
@@ -41,8 +42,8 @@ class layout extends Component {
       return <LandingPage />;
     } else if (this.state.currentPage["ProjectList"]) {
       return <LandingPage />;
-    } else if (this.state.currentPage["AmortProject"]) {
-      return <LandingPage />;
+    } else if (this.state.currentPage["AmortTool"]) {
+      return <AmortTool />;
     }
   };
 
