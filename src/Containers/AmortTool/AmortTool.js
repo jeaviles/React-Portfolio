@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 
 import { columns } from "./AmortHeaders";
-import amortDataGenerator from "./AmortDataGenerator";
+import amortDataGenerator, { formatDateString } from "./AmortDataGenerator";
 import amortPlotDataGenerator from "./AmortPlotDataGenerator";
 import ReactTable from "react-table";
 import Plot from "react-plotly.js";
@@ -20,7 +20,8 @@ class AmortTool extends Component {
     numMonths: 360,
     firstDate: initialDate,
     data: initialData,
-    plotData: initialPlotData
+    plotData: initialPlotData,
+    showDatePicker: false
   };
 
   inputChangeHandler = event => {
@@ -54,15 +55,21 @@ class AmortTool extends Component {
     this.setState(newState);
   };
 
+  showDatePickerHandler = () => {
+    this.setState(prevState => {
+      return { showDatePicker: !prevState.showDatePicker };
+    });
+  };
+
   render() {
     return (
       <div style={{ width: "85%", margin: "auto", textAlign: "center" }}>
         <h1>Amortization Schedule Tool</h1>
         <Plot
-          style={{ width: "100%" }}
           data={this.state.plotData}
           layout={{
             title: "Amortization Graph",
+            autosize: true,
             showlegend: true,
             xaxis: {
               title: "Date"
@@ -76,8 +83,11 @@ class AmortTool extends Component {
           loanAmt={this.state.loanAmt}
           intRate={this.state.intRate}
           numMonths={this.state.numMonths}
+          payDate={formatDateString(this.state.firstDate)}
           submit={this.submitHandler}
           inputChanged={this.inputChangeHandler}
+          show={this.state.showDatePicker}
+          showHandler={this.showDatePickerHandler}
         />
         <ReactTable
           style={{

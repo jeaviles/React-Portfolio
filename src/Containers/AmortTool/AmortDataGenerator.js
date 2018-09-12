@@ -1,3 +1,22 @@
+export const formatDateString = date => {
+  const monthMap = {
+    0: "Jan",
+    1: "Feb",
+    2: "Mar",
+    3: "Apr",
+    4: "May",
+    5: "Jun",
+    6: "Jul",
+    7: "Aug",
+    8: "Sep",
+    9: "Oct",
+    10: "Nov",
+    11: "Dec"
+  };
+
+  return monthMap[date.getMonth()] + " " + date.getFullYear();
+};
+
 const amortDataGenerator = (amt, rate, period, date) => {
   const incrementMonth = date => {
     const month = date.getMonth();
@@ -8,25 +27,6 @@ const amortDataGenerator = (amt, rate, period, date) => {
     } else {
       return new Date(year, month + 1, 15);
     }
-  };
-
-  const formatDateString = date => {
-    const monthMap = {
-      0: "Jan",
-      1: "Feb",
-      2: "Mar",
-      3: "Apr",
-      4: "May",
-      5: "Jun",
-      6: "Jul",
-      7: "Aug",
-      8: "Sep",
-      9: "Oct",
-      10: "Nov",
-      11: "Dec"
-    };
-
-    return monthMap[date.getMonth()] + " " + date.getFullYear();
   };
 
   rate = rate / (12 * 100);

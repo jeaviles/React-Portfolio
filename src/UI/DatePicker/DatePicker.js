@@ -3,7 +3,7 @@ import React from "react";
 import "./DatePicker.css";
 
 const datePicker = props => {
-  return (
+  return props.show ? (
     <div>
       <div className="DatePicker Card">
         <div className="YearContainer">
@@ -21,20 +21,44 @@ const datePicker = props => {
             <i className=" fa fa-angle-double-right fa-lg" />
           </div>
         </div>
-        <div className="Month Card">JAN</div>
-        <div className="Month Card">FEB</div>
-        <div className="Month Card">MAR</div>
-        <div className="Month Card">APR</div>
-        <div className="Month Card">MAY</div>
-        <div className="Month Card">JUN</div>
-        <div className="Month Card">JUL</div>
-        <div className="Month Card">AUG</div>
-        <div className="Month Card">SEP</div>
-        <div className="Month Card">OCT</div>
-        <div className="Month Card">NOV</div>
-        <div className="Month Card">DEC</div>
+        <div className="Month Card" onClick={props.showHandler}>
+          JAN
+        </div>
+        <div className="Month Card" onClick={props.showHandler}>
+          FEB
+        </div>
+        <div className="Month Card" onClick={props.showHandler}>
+          MAR
+        </div>
+        <div className="Month Card" onClick={props.showHandler}>
+          APR
+        </div>
+        <div className="Month Card" onClick={props.showHandler}>
+          MAY
+        </div>
+        <div className="Month Card" onClick={props.showHandler}>
+          JUN
+        </div>
+        <div className="Month Card" onClick={props.showHandler}>
+          JUL
+        </div>
+        <div className="Month Card" onClick={props.showHandler}>
+          AUG
+        </div>
+        <div className="Month Card" onClick={props.showHandler}>
+          SEP
+        </div>
+        <div className="Month Card" onClick={props.showHandler}>
+          OCT
+        </div>
+        <div className="Month Card" onClick={props.showHandler}>
+          NOV
+        </div>
+        <div className="Month Card" onClick={props.showHandler}>
+          DEC
+        </div>
       </div>
     </div>
-  );
+  ) : null;
 };
 export default datePicker;

@@ -10,12 +10,24 @@
 
 .DatePicker {
   font-weight: bold;
+  background-color: #c4c4c4;
   color: blue;
   display: flex;
   flex-wrap: wrap;
   width: 200px;
   border: 1px #202b35 solid;
   border-radius: 3%;
+  cursor: pointer;
+  z-index: 102;
+  left: 100px;
+  top: 100px;
+
+  position: fixed;
+  height: 200px;
+  top: 50%;
+  left: 50%;
+  margin-top: -50px; /* Negative half of height. */
+  margin-left: -50px; /* Negative half of width. */
 }
 
 .DatePicker .Month {
