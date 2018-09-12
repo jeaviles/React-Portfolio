@@ -29,6 +29,6 @@ export const columns = [
   },
   {
     Header: "Ending Balance",
-    accessor: "endingbalance"
+    accessor: "endingBalance"
   }
 ];

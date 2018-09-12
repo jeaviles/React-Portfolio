@@ -1,0 +1,44 @@
+.Card {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.4);
+  transition: 0.3s;
+  border-radius: 5px;
+}
+
+.Card:hover {
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.8);
+}
+
+.DatePicker {
+  font-weight: bold;
+  color: blue;
+  display: flex;
+  flex-wrap: wrap;
+  width: 200px;
+  border: 1px #202b35 solid;
+  border-radius: 3%;
+}
+
+.DatePicker .Month {
+  flex: 1 0 30%;
+  margin: 1px;
+  height: 25px;
+  text-align: center;
+  padding-top: 5px;
+}
+
+.DatePicker .YearContainer {
+  display: flex;
+  flex: 1 0 90%;
+  height: 25px;
+  padding-bottom: 10px;
+  margin-bottom: 5px;
+  justify-content: space-evenly;
+}
+
+.DatePicker .Year {
+  flex: 1 0 15%;
+  margin: 1px;
+  height: 25px;
+  text-align: center;
+  padding-top: 5px;
+}

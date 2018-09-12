@@ -45,19 +45,17 @@ const amortDataGenerator = (amt, rate, period, date) => {
 
   data[0].interest = data[0].beginningBalance * rate;
   data[0].principal = payment - data[0].interest;
-  data[0].endingbalance = data[0].beginningBalance - data[0].principal;
-
-  console.log(data[0].payDate);
+  data[0].endingBalance = data[0].beginningBalance - data[0].principal;
 
   let i = 1;
-  while (data[i - 1].endingbalance.toFixed(2) > 0) {
+  while (data[i - 1].endingBalance.toFixed(2) > 0) {
     data.push({});
-    data[i].beginningBalance = data[i - 1].endingbalance;
+    data[i].beginningBalance = data[i - 1].endingBalance;
     data[i].payment = payment;
     data[i].payDate = incrementMonth(data[i - 1].payDate);
     data[i].interest = data[i].beginningBalance * rate;
     data[i].principal = payment - data[i].interest;
-    data[i].endingbalance = data[i].beginningBalance - data[i].principal;
+    data[i].endingBalance = data[i].beginningBalance - data[i].principal;
     data[i].cumulativeInterest =
       data[i].interest + data[i - 1].cumulativeInterest;
     data[i].cumulativePrincipal =
@@ -71,7 +69,7 @@ const amortDataGenerator = (amt, rate, period, date) => {
     formattedRow.payment = row.payment.toFixed(2);
     formattedRow.interest = row.interest.toFixed(2);
     formattedRow.principal = row.principal.toFixed(2);
-    formattedRow.endingbalance = row.endingbalance.toFixed(2);
+    formattedRow.endingBalance = row.endingBalance.toFixed(2);
     formattedRow.cumulativeInterest = row.cumulativeInterest.toFixed(2);
     formattedRow.cumulativePrincipal = row.cumulativePrincipal.toFixed(2);
     formattedRow.payDate = formatDateString(row.payDate);
