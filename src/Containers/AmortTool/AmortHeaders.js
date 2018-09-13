@@ -1,34 +1,42 @@
 export const columns = [
   {
     Header: "Pay Date",
-    accessor: "payDate"
+    accessor: "payDate",
+    headerClassName: "wordwrap"
   },
   {
     Header: "Beginning Balance",
-    accessor: "beginningBalance"
+    accessor: "beginningBalance",
+    headerClassName: "wordwrap"
   },
   {
     Header: "Payment",
-    accessor: "payment"
+    accessor: "payment",
+    headerClassName: "wordwrap"
   },
   {
     Header: "Principal",
-    accessor: "principal"
+    accessor: "principal",
+    headerClassName: "wordwrap"
   },
   {
     Header: "Interest",
-    accessor: "interest"
+    accessor: "interest",
+    headerClassName: "wordwrap"
   },
   {
     Header: "Cumulative Principal",
-    accessor: "cumulativePrincipal"
+    accessor: "cumulativePrincipal",
+    headerClassName: "wordwrap"
   },
   {
     Header: "Cumulative Interest",
-    accessor: "cumulativeInterest"
+    accessor: "cumulativeInterest",
+    headerClassName: "wordwrap"
   },
   {
     Header: "Ending Balance",
-    accessor: "endingBalance"
+    accessor: "endingBalance",
+    headerClassName: "wordwrap"
   }
 ];

@@ -4,7 +4,7 @@ import { columns } from "./AmortHeaders";
 import amortDataGenerator, { formatDateString } from "./AmortDataGenerator";
 import amortPlotDataGenerator from "./AmortPlotDataGenerator";
 import ReactTable from "react-table";
-import Plot from "react-plotly.js";
+import AmortPlot from "../../components/AmortTool/AmortPlot/AmortPlot";
 import AmortForm from "../../components/AmortTool/AmortForm/AmortForm";
 
 import "./ReactTable/ReactTable.css";
@@ -56,17 +56,11 @@ class AmortTool extends Component {
   submitHandler = event => {
     event.preventDefault();
 
-    let updatedDate = new Date(
-      Number(this.state.year),
-      monthMap[this.state.month],
-      15
-    );
-
     const updatedData = amortDataGenerator(
       this.state.loanAmt,
       this.state.intRate,
       this.state.numMonths,
-      updatedDate
+      this.state.firstDate
     );
 
     const updatedPlotData = amortPlotDataGenerator(updatedData);
@@ -75,7 +69,6 @@ class AmortTool extends Component {
 
     newState.data = updatedData;
     newState.plotData = updatedPlotData;
-    newState.firstDate = updatedDate;
 
     this.setState(newState);
   };
@@ -87,44 +80,81 @@ class AmortTool extends Component {
   };
 
   datePickerHandler = event => {
+    let newMonth = null;
+    let newYear = this.state.year;
+
     if (event.target.innerText) {
-      this.setState({ month: event.target.innerText });
+      newMonth = event.target.innerText;
       this.showDatePickerHandler();
     } else {
-      let newYear = this.state.year;
       if (event.target.className.includes("angle-left")) {
-        this.setState({ year: (newYear -= 1) });
+        newYear -= 1;
       } else if (event.target.className.includes("angle-right")) {
-        this.setState({ year: (newYear += 1) });
+        newYear += 1;
       } else if (event.target.className.includes("double-left")) {
-        this.setState({ year: (newYear -= 5) });
+        newYear -= 5;
       } else if (event.target.className.includes("double-right")) {
-        this.setState({ year: (newYear += 5) });
+        newYear += 5;
       }
       if (newYear < 0) {
-        this.setState({ year: 0 });
+        newYear = 0;
       }
     }
+
+    let updatedDate = new Date(
+      Number(newYear),
+      this.state.firstDate.getMonth(),
+      15
+    );
+
+    if (newMonth) {
+      updatedDate = new Date(Number(newYear), monthMap[newMonth], 15);
+    }
+
+    this.setState(prevState => {
+      return {
+        year: newYear,
+        month: newMonth ? newMonth : prevState.month,
+        firstDate: updatedDate
+      };
+    });
+  };
+
+  updateDimensions = () => {
+    let w = window,
+      d = document,
+      documentElement = d.documentElement,
+      body = d.getElementsByTagName("body")[0],
+      width = w.innerWidth || documentElement.clientWidth || body.clientWidth,
+      height =
+        w.innerHeight || documentElement.clientHeight || body.clientHeight;
+
+    this.setState({ windowWidth: width, windowHeight: height });
+  };
+
+  componentWillMount = () => {
+    this.updateDimensions();
+  };
+
+  componentDidMount = () => {
+    window.addEventListener("resize", this.updateDimensions);
+  };
+
+  componentWillUnmount = () => {
+    window.removeEventListener("resize", this.updateDimensions);
   };
 
   render() {
+    const dynamicWidth = this.state.windowWidth + "px";
     return (
       <div style={{ width: "85%", margin: "auto", textAlign: "center" }}>
         <h1>Amortization Schedule Tool</h1>
-        <Plot
-          data={this.state.plotData}
-          layout={{
-            title: "Amortization Graph",
-            autosize: true,
-            showlegend: true,
-            xaxis: {
-              title: "Date"
-            },
-            yaxis: {
-              title: "Dollars ($)"
-            }
-          }}
-        />
+        <div style={{ width: { dynamicWidth }, overflow: "hidden" }}>
+          <AmortPlot
+            plotWidth={this.state.windowWidth * 0.83}
+            plotData={this.state.plotData}
+          />
+        </div>
         <AmortForm
           loanAmt={this.state.loanAmt}
           intRate={this.state.intRate}
@@ -139,7 +169,8 @@ class AmortTool extends Component {
         />
         <ReactTable
           style={{
-            height: "500px" // This will force the table body to overflow and scroll, since there is not enough room
+            height: "500px", // This will force the table body to overflow and scroll, since there is not enough room
+            width: { dynamicWidth }
           }}
           columns={columns}
           data={this.state.data}

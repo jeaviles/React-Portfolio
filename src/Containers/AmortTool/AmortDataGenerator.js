@@ -37,15 +37,15 @@ const amortDataGenerator = (amt, rate, period, date) => {
     {
       payDate: date,
       beginningBalance: amt,
-      payment: payment,
-      cumulativePrincipal: 0,
-      cumulativeInterest: 0
+      payment: payment
     }
   ];
 
   data[0].interest = data[0].beginningBalance * rate;
   data[0].principal = payment - data[0].interest;
   data[0].endingBalance = data[0].beginningBalance - data[0].principal;
+  data[0].cumulativePrincipal = data[0].principal;
+  data[0].cumulativeInterest = data[0].interest;
 
   let i = 1;
   while (data[i - 1].endingBalance.toFixed(2) > 0) {

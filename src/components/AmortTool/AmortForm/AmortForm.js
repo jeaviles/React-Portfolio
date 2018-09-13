@@ -8,7 +8,9 @@ const amortForm = props => {
     <form onSubmit={props.submit}>
       <div className="AmortForm">
         <div>
-          <label name="loanAmt">Loan Amount($)</label>
+          <label name="loanAmt">
+            Loan<br />Amount($)
+          </label>
           <br />
           <input
             type="number"
@@ -19,10 +21,13 @@ const amortForm = props => {
             step="any"
             onChange={props.inputChanged}
             required={true}
+            id="loanAmt"
           />
         </div>
         <div>
-          <label name="intRate">Interest Rate(%)</label>
+          <label name="intRate">
+            Interest<br />Rate(%)
+          </label>
           <br />
           <input
             type="number"
@@ -33,10 +38,13 @@ const amortForm = props => {
             value={props.intRate}
             onChange={props.inputChanged}
             required={true}
+            id="intRate"
           />
         </div>
         <div>
-          <label name="numMonths">Loan Period(Months)</label>
+          <label name="numMonths">
+            Loan Period<br />(Months)
+          </label>
           <br />
           <input
             type="number"
@@ -47,20 +55,24 @@ const amortForm = props => {
             value={props.numMonths}
             onChange={props.inputChanged}
             required={true}
+            id="loanPeriod"
           />
         </div>
         <div>
-          <label name="payDate">First Pay Date (Click Calendar)</label>
+          <label name="payDate">
+            First Pay Date<br />(Click Calendar)
+          </label>
           <br />
           <input
             type="text"
             name="payDate"
             value={props.payDate}
             disabled={true}
+            id="firstPayDate"
           />
           <span
             className="fa fa-calendar fa-lg"
-            style={{ cursor: "pointer" }}
+            style={{ cursor: "pointer", paddingLeft: "5px" }}
             onClick={props.showHandler}
           />
           <DatePicker
