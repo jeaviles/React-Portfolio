@@ -58,12 +58,16 @@ const amortForm = props => {
             value={props.payDate}
             disabled={true}
           />
-          <i
+          <span
             className="fa fa-calendar fa-lg"
             style={{ cursor: "pointer" }}
             onClick={props.showHandler}
           />
-          <DatePicker show={props.show} showHandler={props.showHandler} />
+          <DatePicker
+            show={props.show}
+            click={props.datePickerHandler}
+            year={props.year}
+          />
         </div>
         <div>
           <input type="submit" value="submit" />

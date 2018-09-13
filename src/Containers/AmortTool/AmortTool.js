@@ -12,6 +12,23 @@ import "./ReactTable/ReactTable.css";
 const initialDate = new Date(Date.now());
 const initialData = amortDataGenerator(300000, 5, 360, new Date(Date.now()));
 const initialPlotData = amortPlotDataGenerator(initialData);
+const initialYear = initialDate.getFullYear();
+const initialMonth = initialDate.getMonth();
+
+const monthMap = {
+  JAN: 0,
+  FEB: 1,
+  MAR: 2,
+  APR: 3,
+  MAY: 4,
+  JUN: 5,
+  JUL: 6,
+  AUG: 7,
+  SEP: 8,
+  OCT: 9,
+  NOV: 10,
+  DEC: 11
+};
 
 class AmortTool extends Component {
   state = {
@@ -21,7 +38,9 @@ class AmortTool extends Component {
     firstDate: initialDate,
     data: initialData,
     plotData: initialPlotData,
-    showDatePicker: false
+    showDatePicker: false,
+    year: initialYear,
+    month: initialMonth
   };
 
   inputChangeHandler = event => {
@@ -36,13 +55,18 @@ class AmortTool extends Component {
 
   submitHandler = event => {
     event.preventDefault();
-    console.log(this.state);
+
+    let updatedDate = new Date(
+      Number(this.state.year),
+      monthMap[this.state.month],
+      15
+    );
 
     const updatedData = amortDataGenerator(
       this.state.loanAmt,
       this.state.intRate,
       this.state.numMonths,
-      this.state.firstDate
+      updatedDate
     );
 
     const updatedPlotData = amortPlotDataGenerator(updatedData);
@@ -51,6 +75,7 @@ class AmortTool extends Component {
 
     newState.data = updatedData;
     newState.plotData = updatedPlotData;
+    newState.firstDate = updatedDate;
 
     this.setState(newState);
   };
@@ -59,6 +84,27 @@ class AmortTool extends Component {
     this.setState(prevState => {
       return { showDatePicker: !prevState.showDatePicker };
     });
+  };
+
+  datePickerHandler = event => {
+    if (event.target.innerText) {
+      this.setState({ month: event.target.innerText });
+      this.showDatePickerHandler();
+    } else {
+      let newYear = this.state.year;
+      if (event.target.className.includes("angle-left")) {
+        this.setState({ year: (newYear -= 1) });
+      } else if (event.target.className.includes("angle-right")) {
+        this.setState({ year: (newYear += 1) });
+      } else if (event.target.className.includes("double-left")) {
+        this.setState({ year: (newYear -= 5) });
+      } else if (event.target.className.includes("double-right")) {
+        this.setState({ year: (newYear += 5) });
+      }
+      if (newYear < 0) {
+        this.setState({ year: 0 });
+      }
+    }
   };
 
   render() {
@@ -88,6 +134,8 @@ class AmortTool extends Component {
           inputChanged={this.inputChangeHandler}
           show={this.state.showDatePicker}
           showHandler={this.showDatePickerHandler}
+          year={this.state.year.toString()}
+          datePickerHandler={this.datePickerHandler}
         />
         <ReactTable
           style={{

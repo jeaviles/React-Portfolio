@@ -35,7 +35,7 @@ const amortDataGenerator = (amt, rate, period, date) => {
 
   const data = [
     {
-      payDate: incrementMonth(date),
+      payDate: date,
       beginningBalance: amt,
       payment: payment,
       cumulativePrincipal: 0,
