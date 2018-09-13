@@ -5,7 +5,11 @@ const navigationItems = props => {
   return (
     <React.Fragment>
       <li className="NavigationItem">
-        <a style={{ color: "#ecebe8" }} href={props.link}>
+        <a
+          style={{ color: "#ecebe8" }}
+          href={props.link}
+          onClick={props.navigate}
+        >
           {props.children}
         </a>
       </li>

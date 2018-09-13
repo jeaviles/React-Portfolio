@@ -3,15 +3,16 @@ import React, { Component } from "react";
 import Toolbar from "../../Navigation/Toolbar/Toolbar";
 import LandingPage from "../../components/Landing/Landing";
 import AmortTool from "../../Containers/AmortTool/AmortTool";
+import ProjectList from "../../components/ProjectList/ProjectList";
 import "./Layout.css";
 
 class layout extends Component {
   state = {
     showSideDrawer: false,
     currentPage: {
-      LandingPage: false,
+      LandingPage: true,
       ProjectList: false,
-      AmortTool: true
+      AmortTool: false
     }
   };
 
@@ -21,10 +22,13 @@ class layout extends Component {
     });
   };
 
-  currentPageHandler = displayPage => {
+  currentPageHandler = event => {
     const updatedCurrenPage = {
       ...this.state.currentPage
     };
+
+    const displayPage = event.target.id;
+    console.log(displayPage);
 
     Object.keys(updatedCurrenPage).forEach(page => {
       if (displayPage === page) {
@@ -41,7 +45,7 @@ class layout extends Component {
     if (this.state.currentPage["LandingPage"]) {
       return <LandingPage />;
     } else if (this.state.currentPage["ProjectList"]) {
-      return <LandingPage />;
+      return <ProjectList />;
     } else if (this.state.currentPage["AmortTool"]) {
       return <AmortTool />;
     }
@@ -53,6 +57,7 @@ class layout extends Component {
         <Toolbar
           toggleSideDrawer={this.toggleDrawerHandler}
           showDrawer={this.state.showSideDrawer}
+          navigate={this.currentPageHandler}
         />
         <main className="Layout">{this.fetchCurrentPage()}</main>
       </React.Fragment>

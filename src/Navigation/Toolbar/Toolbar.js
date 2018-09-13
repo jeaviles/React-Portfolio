@@ -9,13 +9,13 @@ import "./Toolbar.css";
 const toolbar = props => {
   return (
     <header className="Toolbar">
-      <Logo height="80%" />
+      <Logo height="80%" navigate={props.navigate} />
       <DrawerToggle clicked={props.toggleSideDrawer} />
       <SideDrawer
         clicked={props.toggleSideDrawer}
         showDrawer={props.showDrawer}
       />
-      <NavigationItems DesktopOnly />
+      <NavigationItems DesktopOnly navigate={props.navigate} />
     </header>
   );
 };

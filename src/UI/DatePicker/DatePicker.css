@@ -10,12 +10,12 @@
 
 .DatePicker {
   font-weight: bold;
-  background-color: #e3e8ef;
+  background-color: #ecebe8;
   color: blue;
   display: flex;
   flex-wrap: wrap;
   width: 200px;
-  border: 1px #202b35 solid;
+  border: 0.5px #202b35 solid;
   border-radius: 3%;
   cursor: pointer;
   z-index: 102;
