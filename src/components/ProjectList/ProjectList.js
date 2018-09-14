@@ -8,7 +8,7 @@ const projectList = props => {
     <React.Fragment>
       <h1 className="ProjectList">Project List</h1>
       <div>
-        <CardList />
+        <CardList navigate={props.navigate} />
       </div>
     </React.Fragment>
   );

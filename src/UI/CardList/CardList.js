@@ -7,20 +7,8 @@ import "./CardList.css";
 const cardList = props => {
   return (
     <div className="CardList">
-      <AmortCard />
-      <LandingCard />
-      <AmortCard />
-      <LandingCard />
-      <AmortCard />
-      <LandingCard />
-      <AmortCard />
-      <LandingCard />
-      <AmortCard />
-      <LandingCard />
-      <AmortCard />
-      <LandingCard />
-      <AmortCard />
-      <LandingCard />
+      <AmortCard navigate={props.navigate} />
+      <LandingCard navigate={props.navigate} />
     </div>
   );
 };

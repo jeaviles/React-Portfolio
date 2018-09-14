@@ -9,6 +9,7 @@ const navigationItems = props => {
           style={{ color: "#ecebe8" }}
           href={props.link}
           onClick={props.navigate}
+          id={props.page}
         >
           {props.children}
         </a>

@@ -11,8 +11,8 @@ const navigationItems = props => {
   return (
     <React.Fragment>
       <ul className={classes}>
-        <NavigationItem navigate={props.navigate}>
-          Projects <span className="fa fa-th fa-lg" />
+        <NavigationItem navigate={props.navigate} page="ProjectList">
+          Projects <span id="ProjectList" className="fa fa-th fa-lg" />
         </NavigationItem>
         <NavigationItem link="mailto:joseph_aviles@hotmail.com">
           Contact Me <span className="fa fa-envelope-o fa-lg" />

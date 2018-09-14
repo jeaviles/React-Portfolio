@@ -120,38 +120,14 @@ class AmortTool extends Component {
     });
   };
 
-  updateDimensions = () => {
-    let w = window,
-      d = document,
-      documentElement = d.documentElement,
-      body = d.getElementsByTagName("body")[0],
-      width = w.innerWidth || documentElement.clientWidth || body.clientWidth,
-      height =
-        w.innerHeight || documentElement.clientHeight || body.clientHeight;
-
-    this.setState({ windowWidth: width, windowHeight: height });
-  };
-
-  componentWillMount = () => {
-    this.updateDimensions();
-  };
-
-  componentDidMount = () => {
-    window.addEventListener("resize", this.updateDimensions);
-  };
-
-  componentWillUnmount = () => {
-    window.removeEventListener("resize", this.updateDimensions);
-  };
-
   render() {
-    const dynamicWidth = this.state.windowWidth + "px";
+    const dynamicWidth = this.props.windowWidth + "px";
     return (
       <div style={{ width: "85%", margin: "auto", textAlign: "center" }}>
         <h1>Amortization Schedule Tool</h1>
         <div style={{ width: { dynamicWidth }, overflow: "hidden" }}>
           <AmortPlot
-            plotWidth={this.state.windowWidth * 0.83}
+            plotWidth={this.props.windowWidth * 0.83}
             plotData={this.state.plotData}
           />
         </div>

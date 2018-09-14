@@ -9,9 +9,13 @@ const logo = props => {
       onClick={props.navigate}
       id="LandingPage"
     >
-      <div>
-        <span className="LogoJ">J</span>
-        <span className="LogoA">A</span>
+      <div id="LandingPage">
+        <span id="LandingPage" className="LogoJ">
+          J
+        </span>
+        <span id="LandingPage" className="LogoA">
+          A
+        </span>
       </div>
     </div>
   );
