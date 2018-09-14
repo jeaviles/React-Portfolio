@@ -14,6 +14,7 @@ const toolbar = props => {
       <SideDrawer
         clicked={props.toggleSideDrawer}
         showDrawer={props.showDrawer}
+        navigate={props.navigate}
       />
       <NavigationItems DesktopOnly navigate={props.navigate} />
     </header>

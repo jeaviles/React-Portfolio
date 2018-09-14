@@ -37,7 +37,7 @@ class layout extends Component {
       }
     });
 
-    this.setState({ currentPage: updatedCurrentPage });
+    this.setState({ currentPage: updatedCurrentPage, showSideDrawer: false });
   };
 
   updateDimensions = () => {
