@@ -4,13 +4,14 @@ import Toolbar from "../../Navigation/Toolbar/Toolbar";
 import LandingPage from "../../components/Landing/Landing";
 import AmortTool from "../../Containers/AmortTool/AmortTool";
 import ProjectList from "../../components/ProjectList/ProjectList";
+import TaxTool from "../../Containers/TaxTool/TaxTool";
 import "./Layout.css";
 
 class layout extends Component {
   state = {
     showSideDrawer: false,
     currentPage: {
-      LandingPage: true,
+      LandingPage: false,
       ProjectList: false,
       AmortTool: false
     }
@@ -87,7 +88,10 @@ class layout extends Component {
           showDrawer={this.state.showSideDrawer}
           navigate={this.currentPageHandler}
         />
-        <main className="Layout">{currentPage}</main>
+        <main className="Layout">
+          {currentPage}
+          <TaxTool />
+        </main>
       </React.Fragment>
     );
   }

@@ -28,7 +28,7 @@
 @media (min-width: 1100px) {
   .DesktopLanding {
     display: flex;
-    justify-content: space-evenly;
+    justify-content: center;
   }
 
   .DesktopLanding .col {

@@ -1,0 +1,23 @@
+.TaxToolForm {
+  display: flex;
+  justify-content: flex-start;
+  flex-flow: row wrap;
+  align-items: center;
+  align-content: flex-start;
+  padding-bottom: 5px;
+}
+
+#loanAmt {
+  max-width: 120px;
+}
+
+#firstPayDate {
+  max-width: 100px;
+}
+
+#intRate {
+  max-width: 100px;
+}
+#loanPeriod {
+  max-width: 100px;
+}
