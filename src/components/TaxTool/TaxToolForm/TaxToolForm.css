@@ -1,4 +1,5 @@
 .TaxToolForm {
+  margin-left: 15px;
   display: flex;
   justify-content: flex-start;
   flex-flow: row wrap;
@@ -7,17 +8,6 @@
   padding-bottom: 5px;
 }
 
-#loanAmt {
+#income {
   max-width: 120px;
-}
-
-#firstPayDate {
-  max-width: 100px;
-}
-
-#intRate {
-  max-width: 100px;
-}
-#loanPeriod {
-  max-width: 100px;
 }

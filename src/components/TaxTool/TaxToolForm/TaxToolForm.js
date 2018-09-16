@@ -8,7 +8,7 @@ const taxToolForm = props => {
     disabled = true;
   }
   return (
-    <div className="TaxToolForm">
+    <div className="TaxToolForm" style={{ marginLeft: props.margin }}>
       <div>
         <label name="setting">Setting:</label>
         <br />
@@ -45,6 +45,7 @@ const taxToolForm = props => {
           step="any"
           required={true}
           onChange={props.updated}
+          id="income"
         />
       </div>
     </div>

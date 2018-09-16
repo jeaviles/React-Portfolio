@@ -22,21 +22,24 @@ class TaxTool extends Component {
   };
 
   render() {
+    let windowWidth = this.props.windowWidth;
+    let marginWidth = 15;
+
+    if (windowWidth > 500) {
+      marginWidth = windowWidth * 0.075;
+      windowWidth = windowWidth * 0.85;
+    }
+
     let chart = null;
     if (this.state.setting === "Default") {
-      chart = (
-        <TaxHeatMap
-          mode={this.state.mode}
-          windowWidth={this.props.windowWidth}
-        />
-      );
+      chart = <TaxHeatMap mode={this.state.mode} windowWidth={windowWidth} />;
     } else {
       if (this.state.type === "Map") {
         chart = (
           <TaxUSAMap
             income={Number(this.state.income)}
             mode={this.state.mode}
-            windowWidth={this.props.windowWidth}
+            windowWidth={windowWidth}
           />
         );
       } else {
@@ -44,26 +47,27 @@ class TaxTool extends Component {
           <TaxBarChart
             income={Number(this.state.income)}
             mode={this.state.mode}
-            windowWidth={this.props.windowWidth}
+            windowWidth={windowWidth}
           />
         );
       }
     }
     return (
-      <div className="TaxTool">
-        <h1 style={{ textAlign: "center" }}>2018 USA Single Tax Charts</h1>
+      <div className="TaxTool" style={{ textAlign: "center" }}>
+        <h1>2018 USA Single Tax Charts</h1>
         <div className="PlotContainer">{chart}</div>
+        <p style={{ fontSize: "8pt" }}>
+          Disclaimer: Data collected for educational purposes. Some states have
+          more complicated tax structures than simple brackets.
+        </p>
         <TaxToolForm
+          margin={marginWidth}
           setting={this.state.setting}
           type={this.state.type}
           income={this.state.income}
           mode={this.state.mode}
           updated={this.formChangeHandler}
         />
-        <p style={{ fontSize: "8pt" }}>
-          Disclaimer: Data collected for educational purposes. Some states have
-          more complicated tax structures than simple brackets.
-        </p>
       </div>
     );
   }

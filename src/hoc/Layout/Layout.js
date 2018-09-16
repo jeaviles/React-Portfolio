@@ -11,9 +11,10 @@ class layout extends Component {
   state = {
     showSideDrawer: false,
     currentPage: {
-      LandingPage: false,
+      LandingPage: true,
       ProjectList: false,
-      AmortTool: false
+      AmortTool: false,
+      TaxTool: false
     }
   };
 
@@ -79,6 +80,8 @@ class layout extends Component {
       currentPage = <ProjectList navigate={this.currentPageHandler} />;
     } else if (this.state.currentPage.AmortTool) {
       currentPage = <AmortTool windowWidth={this.state.windowWidth} />;
+    } else if (this.state.currentPage.TaxTool) {
+      currentPage = <TaxTool windowWidth={this.state.windowWidth} />;
     }
 
     return (
@@ -88,10 +91,7 @@ class layout extends Component {
           showDrawer={this.state.showSideDrawer}
           navigate={this.currentPageHandler}
         />
-        <main className="Layout">
-          {currentPage}
-          <TaxTool windowWidth={this.state.windowWidth} />
-        </main>
+        <main className="Layout">{currentPage}</main>
       </React.Fragment>
     );
   }

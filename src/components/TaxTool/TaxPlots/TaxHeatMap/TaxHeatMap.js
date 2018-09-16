@@ -1,21 +1,19 @@
 import React from "react";
 
 import Plot from "react-plotly.js";
-import makeHeatMap from "./makeHeatMap";
-import { heatMapRateData } from "./HeatMapDefault";
+import { defaultDollarsHeatMap } from "./defaultDollarsHeatMap";
+import { defaultRatesHeatMap } from "./defaultRatesHeatMap";
 
 const taxHeatMap = props => {
-  const plotData = makeHeatMap(props.mode);
-
-  let subTitle = null;
+  let plotData = null;
   let chartTitle = null;
 
   if (props.mode === "Dollars") {
-    subTitle = "Dollars $";
     chartTitle = "2018 US Dollars Levied by State";
+    plotData = defaultDollarsHeatMap;
   } else {
-    subTitle = "Tax Rate %";
     chartTitle = "2018 US Effective Tax Rates by State";
+    plotData = defaultRatesHeatMap;
   }
 
   return (
@@ -43,5 +41,3 @@ const taxHeatMap = props => {
 };
 
 export default taxHeatMap;
-
-// data={heatMapRateData}

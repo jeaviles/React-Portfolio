@@ -20,7 +20,7 @@ const makeUSAMap = (userData, maxValue, userType) => {
       autocolorscale: true,
       colorbar: {
         title: title,
-        thickness: 0.2
+        thickness: 20
       },
       marker: {
         line: {

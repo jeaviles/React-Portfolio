@@ -39,13 +39,13 @@ const makeHeatMap = userType => {
   }
 
   const hoverText = zValues.map((row, i) => {
-    return row.map(item => {
+    return row.map((item, j) => {
       if (userType === "Dollars") {
-        return `State: ${xValues[i]}<br>Income: ${
+        return `State: ${xValues[j]}<br>Income: ${
           yValues[i]
         }<br>Amount: ${item}`;
       } else {
-        return `State: ${xValues[i]}<br>Income: ${
+        return `State: ${xValues[j]}<br>Income: ${
           yValues[i]
         }<br>Rate: ${item}%`;
       }
