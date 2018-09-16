@@ -5,17 +5,30 @@ import makeHeatMap from "./makeHeatMap";
 import { heatMapRateData } from "./HeatMapDefault";
 
 const taxHeatMap = props => {
-  // const plotData = makeHeatMap();
+  const plotData = makeHeatMap(props.mode);
+
+  let subTitle = null;
+  let chartTitle = null;
+
+  if (props.mode === "Dollars") {
+    subTitle = "Dollars $";
+    chartTitle = "2018 US Dollars Levied by State";
+  } else {
+    subTitle = "Tax Rate %";
+    chartTitle = "2018 US Effective Tax Rates by State";
+  }
+
   return (
     <div>
       <Plot
-        data={heatMapRateData}
+        data={plotData}
         layout={{
-          title: "2018 US Dollars Levied by State",
+          title: chartTitle,
+          width: props.windowWidth,
           annotations: [],
           xaxis: {
             ticks: "",
-            side: "top"
+            side: "bottom"
           },
           yaxis: {
             title: "Income ($)",
@@ -25,9 +38,10 @@ const taxHeatMap = props => {
           }
         }}
       />
-      <p>Hello!</p>
     </div>
   );
 };
 
 export default taxHeatMap;
+
+// data={heatMapRateData}

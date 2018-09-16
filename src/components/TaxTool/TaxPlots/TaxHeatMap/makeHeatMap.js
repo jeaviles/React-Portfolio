@@ -1,7 +1,7 @@
 import getTaxData from "../TaxData/getTaxData";
 import { states } from "../TaxData/taxData";
 
-const makeHeatMap = (userType = "rates") => {
+const makeHeatMap = userType => {
   const xValues = states;
 
   const yValues = [
@@ -38,13 +38,29 @@ const makeHeatMap = (userType = "rates") => {
     zValues.push(getTaxData(yValues[i], userType));
   }
 
+  const hoverText = zValues.map((row, i) => {
+    return row.map(item => {
+      if (userType === "Dollars") {
+        return `State: ${xValues[i]}<br>Income: ${
+          yValues[i]
+        }<br>Amount: ${item}`;
+      } else {
+        return `State: ${xValues[i]}<br>Income: ${
+          yValues[i]
+        }<br>Rate: ${item}%`;
+      }
+    });
+  });
+
   const data = [
     {
       x: xValues,
       y: yValues,
       z: zValues,
       type: "heatmap",
-      showscale: true
+      showscale: true,
+      hoverinfo: "text",
+      text: hoverText
     }
   ];
 

@@ -5,14 +5,28 @@ import makeBarChart from "./makeBarChart";
 import getTaxData from "../TaxData/getTaxData";
 
 const taxBarChart = props => {
-  const plotData = makeBarChart(getTaxData(30000));
+  let subTitle = null;
+  let chartTitle = null;
+
+  if (props.mode === "Dollars") {
+    subTitle = "Dollars $";
+    chartTitle = "2018 US Dollars Levied by State";
+  } else {
+    subTitle = "Tax Rate %";
+    chartTitle = "2018 US Effective Tax Rates by State";
+  }
+  const plotData = makeBarChart(
+    getTaxData(props.income, props.mode),
+    props.type
+  );
   return (
     <Plot
       data={plotData}
       layout={{
-        title: "2018 US Dollars Levied by State",
+        title: chartTitle,
+        width: props.windowWidth,
         yaxis: {
-          title: "Dollars $",
+          title: subTitle,
           titlefont: {
             size: 16,
             color: "rgb(107, 107, 107)"

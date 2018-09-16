@@ -1,7 +1,14 @@
 import { states, stateCodes } from "../TaxData/taxData";
 
-const makeUSAMap = (userData, maxValue) => {
-  var data = [
+const makeUSAMap = (userData, maxValue, userType) => {
+  let title = null;
+  if (userType === "Dollars") {
+    title = "Dollars $";
+  } else {
+    title = "Rate %";
+  }
+
+  const data = [
     {
       type: "choropleth",
       locationmode: "USA-states",
@@ -10,16 +17,9 @@ const makeUSAMap = (userData, maxValue) => {
       text: states,
       zmin: 0,
       zmax: maxValue,
-      colorscale: [
-        [0, "rgb(242,240,247)"],
-        [0.2, "rgb(218,218,235)"],
-        [0.4, "rgb(188,189,220)"],
-        [0.6, "rgb(158,154,200)"],
-        [0.8, "rgb(117,107,177)"],
-        [1, "rgb(84,39,143)"]
-      ],
+      autocolorscale: true,
       colorbar: {
-        title: "Dollars $",
+        title: title,
         thickness: 0.2
       },
       marker: {

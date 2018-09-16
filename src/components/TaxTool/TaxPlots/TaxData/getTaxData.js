@@ -1,6 +1,6 @@
 import { stateTaxData } from "./taxData";
 
-const getTaxData = (income, type = "rate") => {
+const getTaxData = (income, type) => {
   let taxData = [];
 
   stateTaxData.forEach(function(state) {
@@ -13,7 +13,7 @@ const getTaxData = (income, type = "rate") => {
       tempIncome = lowerBounds[i];
     }
 
-    if (type === "dollars") {
+    if (type === "Dollars") {
       taxData.push(Math.round(amountLevied * 100) / 100.0);
     } else {
       taxData.push(

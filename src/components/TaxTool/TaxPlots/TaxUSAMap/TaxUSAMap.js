@@ -5,15 +5,22 @@ import makeUSAMap from "./makeUSAMap";
 import getTaxData from "../TaxData/getTaxData";
 
 const taxUSAMap = props => {
-  const show = props.plotWidth > 500;
-  const taxData = getTaxData(30000);
-  const plotData = makeUSAMap(taxData, Math.max(taxData));
+  let chartTitle = null;
+  if (props.mode === "Dollars") {
+    chartTitle = "2018 US Dollars Levied by State";
+  } else {
+    chartTitle = "2018 US Effective Tax Rates by State";
+  }
+
+  const taxData = getTaxData(props.income, props.mode);
+  const plotData = makeUSAMap(taxData, Math.max(taxData), props.mode);
 
   return (
     <Plot
       data={plotData}
       layout={{
-        title: "2018 US Dollars Levied by State",
+        title: chartTitle,
+        width: props.windowWidth,
         geo: {
           scope: "usa",
           showlakes: true,

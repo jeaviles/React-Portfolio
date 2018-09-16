@@ -3,35 +3,48 @@ import React from "react";
 import "./TaxToolForm.css";
 
 const taxToolForm = props => {
+  let disabled = false;
+  if (props.setting === "Default") {
+    disabled = true;
+  }
   return (
     <div className="TaxToolForm">
       <div>
         <label name="setting">Setting:</label>
         <br />
-        <select name="setting">
-          <option value="default">Default</option>
-          <option value="custom">Custom</option>
+        <select name="setting" value={props.setting} onChange={props.updated}>
+          <option value="Default">Default</option>
+          <option value="Custom">Custom</option>
         </select>
       </div>
       <div>
-        <label name="chart">Type:</label>
+        <label name="mode">Mode:</label>
         <br />
-        <select name="chart">
-          <option value="map">Map</option>
-          <option value="custom">Bar</option>
+        <select name="mode" value={props.mode} onChange={props.updated}>
+          <option value="Rates">Rates</option>
+          <option value="Dollars">Dollars</option>
         </select>
       </div>
-      <div>
+      <div hidden={disabled}>
+        <label name="type">Type:</label>
+        <br />
+        <select name="type" value={props.type} onChange={props.updated}>
+          <option value="Map">Map</option>
+          <option value="Bar">Bar</option>
+        </select>
+      </div>
+      <div hidden={disabled}>
         <label name="income">Income($):</label>
         <br />
         <input
           type="number"
           name="income"
-          value="30000"
+          value={props.income}
           min="0.01"
           max="1000000000000000"
           step="any"
           required={true}
+          onChange={props.updated}
         />
       </div>
     </div>

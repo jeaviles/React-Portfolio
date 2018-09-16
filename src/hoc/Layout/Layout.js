@@ -90,7 +90,7 @@ class layout extends Component {
         />
         <main className="Layout">
           {currentPage}
-          <TaxTool />
+          <TaxTool windowWidth={this.state.windowWidth} />
         </main>
       </React.Fragment>
     );
