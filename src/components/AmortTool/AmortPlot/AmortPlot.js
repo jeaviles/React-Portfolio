@@ -11,9 +11,6 @@ const amortPlot = props => {
         title: "Amortization Graph",
         showlegend: show,
         width: props.plotWidth,
-        xaxis: {
-          title: "Date"
-        },
         yaxis: {
           title: "Dollars ($)"
         }

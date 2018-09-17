@@ -15,13 +15,13 @@ const amortPlotDataGenerator = data => {
     {
       x: [],
       y: [],
-      name: "Cumulative Principal",
+      name: "Cumulative Interest",
       type: "line"
     },
     {
       x: [],
       y: [],
-      name: "Cumulative Interest",
+      name: "Cumulative Principal",
       type: "line"
     }
   ];
