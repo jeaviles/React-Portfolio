@@ -26,7 +26,7 @@ const landing = props => {
             <strong>Joseph Aviles</strong>
           </p>
           <p>
-            I am a Normalization Engineer at Clearwater Analytics in Boise,
+            I am a Software Development Engineer at Clearwater Analytics in Boise,
             Idaho. I enjoy creating tools, automating tasks and learning new
             things.
           </p>

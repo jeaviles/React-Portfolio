@@ -1,6 +1,6 @@
 import React from "react";
 
-import CardPicture from "../../../assets/images/Amort.png";
+import CardPicture from "../../../assets/images/amort.png";
 import "../../../UI/Card/Card.css";
 import ProjectCard from "../../../UI/Card/ProjectCard";
 
