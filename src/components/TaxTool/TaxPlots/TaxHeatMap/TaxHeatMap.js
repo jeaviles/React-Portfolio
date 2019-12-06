@@ -1,12 +1,15 @@
 import React from "react";
+import Plotly from 'plotly.js-cartesian-dist-min'
+import createPlotlyComponent from 'react-plotly.js/factory';
 
-import Plot from "react-plotly.js";
 import { defaultDollarsHeatMap } from "./defaultDollarsHeatMap";
 import { defaultRatesHeatMap } from "./defaultRatesHeatMap";
 
 const taxHeatMap = props => {
   let plotData = null;
   let chartTitle = null;
+
+  const Plot = createPlotlyComponent(Plotly);
 
   if (props.mode === "Dollars") {
     chartTitle = "2018 US Dollars Levied by State";

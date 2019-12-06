@@ -1,6 +1,7 @@
 import React from "react";
+import Plotly from 'plotly.js-geo-dist-min'
+import createPlotlyComponent from 'react-plotly.js/factory';
 
-import Plot from "react-plotly.js";
 import makeUSAMap from "./makeUSAMap";
 import getTaxData from "../TaxData/getTaxData";
 
@@ -12,6 +13,7 @@ const taxUSAMap = props => {
     chartTitle = "2018 US Effective Tax Rates by State";
   }
 
+  const Plot = createPlotlyComponent(Plotly);
   const taxData = getTaxData(props.income, props.mode);
   const plotData = makeUSAMap(taxData, Math.max(taxData), props.mode);
 
