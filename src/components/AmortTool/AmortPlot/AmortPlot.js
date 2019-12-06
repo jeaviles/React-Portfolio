@@ -1,9 +1,12 @@
 import React from "react";
-
-import Plot from "react-plotly.js";
+import Plotly from 'plotly.js-cartesian-dist-min'
+import createPlotlyComponent from 'react-plotly.js/factory';
 
 const amortPlot = props => {
   const show = props.plotWidth > 500;
+
+  const Plot = createPlotlyComponent(Plotly);
+
   return (
     <Plot
       data={props.plotData}

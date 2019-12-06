@@ -1,12 +1,15 @@
 import React from "react";
+import Plotly from 'plotly.js-cartesian-dist-min'
+import createPlotlyComponent from 'react-plotly.js/factory';
 
-import Plot from "react-plotly.js";
 import makeBarChart from "./makeBarChart";
 import getTaxData from "../TaxData/getTaxData";
 
 const taxBarChart = props => {
   let subTitle = null;
   let chartTitle = null;
+
+  const Plot = createPlotlyComponent(Plotly);
 
   if (props.mode === "Dollars") {
     subTitle = "Dollars $";
